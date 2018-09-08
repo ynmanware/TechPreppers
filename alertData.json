@@ -8,6 +8,5 @@
     {"name": "St Joseph’s Primary School", "number": "800", "address": "46 Otter St, Collingwood VIC 3066"}],
   physicallyChallengedPeople:[{"name": "Mr. Eric", "number": "1", "address": "12 Rathdowne St, Carlton VIC 3053"},
     {"name": "Mr. Michael - family", "number": "2", "address": "3 Otter St, Collingwood VIC 3066"}],
-  majorEvents: [{"name": "Mr. Eric", "number": "1", "address": "12 Rathdowne St, Carlton VIC 3053"},
-    {"name": "Mr. Michael - family", "number": "2", "address": "3 Otter St, Collingwood VIC 3066"}]
+  majorEvents: [{"name": "Wonderland", "number": "500", "address": "Federation Square"}]
 }
