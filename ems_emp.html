@@ -1,0 +1,106 @@
+<html>
+
+<head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4"
+        crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm"
+        crossorigin="anonymous"></script>
+    <link href="./index.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.3.4/dist/leaflet.js"></script>
+    <script>
+        $(document).ready(function(){
+        //var json = '';
+        //$("#alertData").html="";
+    var map = L.map('mapid').setView([-37.5018, 145.123], 15);
+    console.log("Map initialised");
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
+
+    var FlameIconOpt = L.Icon.extend({
+        options: {            
+            iconSize:     [38, 38],            
+            iconAnchor:   [0, 0],
+            popupAnchor:  [20, 5]
+        }
+    });
+
+    var flameIcon = new FlameIconOpt({iconUrl: './markers/flame.png'});
+
+    L.marker([-37.5068, 145.119] /* , { icon: flameIcon} */ ).addTo(map)
+    .bindPopup('<h6 class="alert-danger">John is waiting for help..</h6>')
+    .openPopup();
+
+    L.marker([-37.5038, 145.120] /* , { icon: flameIcon} */ ).addTo(map)
+    .bindPopup('<h6 class="alert-danger">Mack is waiting for help..</h6>')
+    .openPopup();
+
+    L.marker([-37.5018, 145.123] /* , { icon: flameIcon} */ ).addTo(map)
+    .bindPopup('<h6 class="alert-danger">John is waiting for help..</h6>')
+    .openPopup();
+
+   /* var ctx = document.getElementById("myChart").getContext('2d');
+var myChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+        datasets: [{
+            label: '# of Votes',
+            data: [12, 19, 3, 5, 2, 3],
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(255, 159, 64, 0.2)'
+            ],
+            borderColor: [
+                'rgba(255,99,132,1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)'
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero:true
+                }
+            }]
+        }
+    }
+});*/
+});
+</script>
+</head>
+
+<body style="background: white;">
+    <div class="container-fluid">
+        <div style="padding: 5px; padding-left:10px;" class="row">
+            <div class="col-sm-8">
+                <h1 class="display-4 text-dark">Emergency Rescue System</h1>
+            </div>
+            <div class="col-sm-4" style="padding-top:10px;" align="center">
+                <span>Welcome George</span>
+                <button class="btn btn-warning" id="ems_logout" style="padding: 5px; font-weight: bold">Logout</button>
+            </div>
+        </div>
+        <div class="row">
+            
+        </div>
+    </div>    
+</body>
+
+</html>
