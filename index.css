@@ -1,0 +1,26 @@
+.mybox{
+
+}
+
+.shadow{
+    box-shadow: 5px 10px 18px #888888;
+}
+
+.col3height{
+    height: 200px;
+    padding: 5px;
+    overflow: auto;
+    color: black;
+    padding-right: 5px;
+    padding-left: 10px;    
+}
+
+.col-sm{
+    padding-right: 8px;
+    padding-left: 8px;
+}
+
+.col-sm-6{
+    padding-right: 8px;
+    padding-left: 8px;
+}
