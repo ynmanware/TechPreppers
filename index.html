@@ -18,6 +18,7 @@
         $(document).ready(function(){
             $("#recordingModal").modal("hide");
             $('#registerModal').modal('hide');
+            $("#succ_alert").hide();
         //var json = '';
         //$("#alertData").html="";
     var map = L.map('mapid').setView([-37.5068, 145.129], 15);
@@ -34,6 +35,7 @@
         }
     });
 
+    var regName = "Tom";
     var flameIcon = new FlameIconOpt({iconUrl: './markers/danger.png'});
     var waterIcon = new FlameIconOpt({iconUrl: './markers/water.png'});
     var bananaIcon = new FlameIconOpt({iconUrl: './markers/banana.png'});
@@ -66,6 +68,7 @@
     });
 
     $("#done_btn").click(function(){
+        
         $('#recordingModal').modal('hide');
     });
 
@@ -74,7 +77,18 @@
     });
 
     $("#submit_reg_btn").click(function(){
+        regName = $("#pname").val().toString();
         $('#registerModal').modal('hide');
+    });
+
+    $("#button_send").click(function(){
+        var ht = $("#messages_txt").html();
+        $("#messages_txt").html(ht+ "<br/><span class=\"bold\">"+regName+" :</span>"+$("#send_message_txt").val().toString());
+        $("#send_message_txt").val("");
+        $("#succ_alert").show();
+        setTimeout(function(){
+            $("#succ_alert").alert("close");
+        },1500);
     });
 
 
@@ -157,7 +171,7 @@ var myChart = new Chart(ctx, {
                             <div class="form-group row">
                                 <label for="staticEmail" class="col-sm-3 col-form-label">Name :</label>
                                 <div class="col-sm-9">
-                                <input type="text" class="form-control" placeholder="Please enter your name" >
+                                <input type="text" class="form-control" placeholder="Please enter your name" id="pname" >
                                 </div>
                             </div>
                             <div class="form-group row">
@@ -229,14 +243,27 @@ var myChart = new Chart(ctx, {
                             </div>
                         </div>
                     </div>
-                    <div class="card-body" style="height: 200px; overflow: scroll">
-                        <marquee direction="up" scrollamount="1">
-                            <p class="card-text">Messages from your near and dear .. </p>
-                            <p class="text-dark">
-                                <span class="bold">Donald Downey :</span> I am safe and searching my son Ricky Downey. I am at SEA LIFE Melbourne Aquarium<br/><br/>
-                                <span class="bold">Michael Tan :</span> I am at SEA LIFE Melbourne Aquarium
-                            </p>
-                        </marquee>
+                    <div class="card-body">
+                        <div  style="height: 120px; overflow: auto">
+                            <marquee direction="up" scrollamount="1">
+                                <p class="card-text">Messages from your near and dear .. </p>
+                                <p class="text-dark" id="messages_txt">
+                                    <span class="bold">Donald Downey :</span> I am safe and searching my son Ricky Downey. I am at SEA LIFE Melbourne Aquarium<br/><br/>
+                                    <span class="bold">Michael Tan :</span> I am at SEA LIFE Melbourne Aquarium
+                                </p>
+                            </marquee>
+                        </div>
+                        <div class="row">
+                            <div class="input-group col-sm">
+                                <input type="text" class="form-control" placeholder="Send your message here.." aria-label="Send your message" aria-describedby="button-addon2" id="send_message_txt">
+                                <div class="input-group-append">
+                                    <button class="btn btn-outline-secondary" type="button" id="button_send">Send</button>
+                                </div>
+                            </div>                            
+                        </div>
+                        <div class="alert alert-success" role="alert" id="succ_alert">
+                                Message sent successfully ...
+                         </div> 
                     </div>
                 </div>
             </div>
@@ -303,6 +330,9 @@ var myChart = new Chart(ctx, {
             </div>
         </div>
 
+      <!--   <div class="alert alert-primary" role="alert" id="succ_alert">
+               Message sent successfully...
+        </div> -->
         <br />
         <br />
         <br />
