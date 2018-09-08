@@ -12,12 +12,15 @@
         crossorigin="anonymous"></script>
     <link href="./index.css" rel="stylesheet">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
     <script src="https://unpkg.com/leaflet@1.3.4/dist/leaflet.js"></script>
     <script>
         $(document).ready(function(){
+            $("#recordingModal").modal("hide");
+            $('#registerModal').modal('hide');
         //var json = '';
         //$("#alertData").html="";
-    var map = L.map('mapid').setView([-37.5018, 145.123], 15);
+    var map = L.map('mapid').setView([-37.5068, 145.129], 15);
     console.log("Map initialised");
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
@@ -31,19 +34,50 @@
         }
     });
 
-    var flameIcon = new FlameIconOpt({iconUrl: './markers/flame.png'});
+    var flameIcon = new FlameIconOpt({iconUrl: './markers/danger.png'});
+    var waterIcon = new FlameIconOpt({iconUrl: './markers/water.png'});
+    var bananaIcon = new FlameIconOpt({iconUrl: './markers/banana.png'});
+    var safeIcon = new FlameIconOpt({iconUrl: './markers/safe.png'});
 
-    L.marker([-37.5068, 145.119] /* , { icon: flameIcon} */ ).addTo(map)
+    L.marker([-37.5068, 145.119] , { icon: flameIcon} ).addTo(map)
     .bindPopup('<h6 class="alert-danger">John is waiting for help..</h6>')
     .openPopup();
+    
 
-    L.marker([-37.5038, 145.120] /* , { icon: flameIcon} */ ).addTo(map)
+    L.marker([-37.5038, 145.120] , { icon: bananaIcon}  ).addTo(map)
     .bindPopup('<h6 class="alert-danger">Mack is waiting for help..</h6>')
     .openPopup();
 
-    L.marker([-37.5018, 145.123] /* , { icon: flameIcon} */ ).addTo(map)
+    L.marker([-37.5018, 145.123] , { icon: waterIcon}  ).addTo(map)
     .bindPopup('<h6 class="alert-danger">John is waiting for help..</h6>')
     .openPopup();
+   
+    L.marker([-37.5068, 145.129] , { icon: safeIcon} ).addTo(map)
+    .bindPopup('<h6 class="alert-success">Safe Assembly point..</h6>')
+    .openPopup();
+
+    /*  L.marker([-37.5062, 145.125]  ).addTo(map)
+    .bindPopup('<h6 class="alert-info">You are here..</h6>')
+    .openPopup(); */
+
+
+    $("#push_btn").click(function(){
+        $('#recordingModal').modal('show');
+    });
+
+    $("#done_btn").click(function(){
+        $('#recordingModal').modal('hide');
+    });
+
+    $("#reg_btn").click(function(){
+        $('#registerModal').modal('show');
+    });
+
+    $("#submit_reg_btn").click(function(){
+        $('#registerModal').modal('hide');
+    });
+
+
 
    /* var ctx = document.getElementById("myChart").getContext('2d');
 var myChart = new Chart(ctx, {
@@ -87,13 +121,70 @@ var myChart = new Chart(ctx, {
 </head>
 
 <body style="background: white;">
+
+
+    <div class="modal fade" tabindex="-1" role="dialog" id="recordingModal">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Recording</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>Sending your Message ...</p>
+                    <img src="recording.PNG" width="200px" height="50px" />
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-success" id="done_btn">Done</button>
+                </div>
+                </div>
+            </div>
+    </div>
+
+    <div class="modal fade" tabindex="-1" role="dialog" id="registerModal">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                <div class="modal-header alert-info text-dark">
+                    <h5 class="modal-title">Register</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                            <div class="form-group row">
+                                <label for="staticEmail" class="col-sm-3 col-form-label">Name :</label>
+                                <div class="col-sm-9">
+                                <input type="text" class="form-control" placeholder="Please enter your name" >
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="inputPassword" class="col-sm-3 col-form-label">Mobile :</label>
+                                <div class="col-sm-9">
+                                <input type="text" class="form-control" id="inputPassword" placeholder="Please enter your mobile number">
+                                </div>
+                            </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-success" id="submit_reg_btn">Register</button>
+                    <button type="reset" class="btn btn-outline-dark" id="reset_btn">Reset</button>
+                </div>
+                </div>
+            </div>
+    </div>
+
     <div class="container-fluid">
         <div style="padding: 5px; padding-left:10px;" class="row">
-            <div class="col-sm-8">
-                <h1 class="display-4 text-dark">Emergency Rescue System</h1>
+            <div class="col-sm-7">
+                <h1 class="display-4 text-dark">Emergency Data Response</h1>
             </div>
-            <div class="col-sm-4" style="padding-top:10px;" align="center">
-                <button class="btn btn-success" id="ems_login" style="padding: 5px; font-weight: bold">EMS Login</button>
+            <div class="col-sm-5" style="padding-top:10px;" align="right">                
+                <button class="btn btn-danger" style="width: 15%; height:15%; border-radius: 50%" id="push_btn"><i class="fas fa-microphone"></i> Push</button>                
+                <button class="btn btn-success" id="ems_login" style="padding: 5px; font-weight: bold">Rescue Team Login</button>
+
             </div>
         </div>
 
@@ -132,23 +223,59 @@ var myChart = new Chart(ctx, {
                                 <input type="text" class="form-control form-control-sm" placeholder="Search for a Person"
                                     aria-label="Search a Person" aria-describedby="button-addon2">
                                 <div class="input-group-append">
-                                    <button class="btn btn-dark btn-sm" type="button" id="button-addon2">Search</button>
+                                    <button class="btn btn-dark btn-sm bold" type="button" id="button-addon2">Search</button>
                                 </div>
+                                <button style="margin-left: 10px;" class="btn btn-dark btn-sm bold" type="button" id="reg_btn">Register</button>
                             </div>
                         </div>
                     </div>
                     <div class="card-body" style="height: 200px; overflow: scroll">
                         <marquee direction="up" scrollamount="1">
-                            <p class="card-text">Populate the data of people near by and their safety .. </p>
-                            <p class="text-dark bold">
-                                John Mr <br />
-                                Looking for a help ...@23.444,45.664
+                            <p class="card-text">Messages from your near and dear .. </p>
+                            <p class="text-dark">
+                                <span class="bold">Donald Downey :</span> I am safe and searching my son Ricky Downey. I am at SEA LIFE Melbourne Aquarium<br/><br/>
+                                <span class="bold">Michael Tan :</span> I am at SEA LIFE Melbourne Aquarium
                             </p>
                         </marquee>
                     </div>
                 </div>
             </div>
         </div>
+
+        <div align="center" class="row">
+                <div class="col-sm-10">
+                    <p style="font-weight: bold; font-size: 1rem;"> Emergency Map </p>
+                    <div id="mapid"></div>
+                </div>
+                <div class="col-sm-2">
+                    <br />                
+                    <br />
+                    
+                    <!-- link to author https://www.iconfinder.com/laurareen  https://www.deviantart.com/svengraph -->
+                    <table>
+                        <tr>
+                            <td><img src="markers/danger.png" width="32px" height="32px" /></td>
+                            <td> - Fire Alerts</td>
+                        </tr>
+                        <tr>
+                            <td><img src="markers/water.png" width="32px" height="32px" /> </td>
+                            <td> - Water Resources</td>
+                        </tr>
+                        <tr>
+                            <td><img src="markers/banana.png" width="32px" height="32px" /> </td>
+                            <td> - Food Resources</td>
+                        </tr>
+                        <tr>
+                                <td><img src="markers/safe.png" width="32px" height="32px" /> </td>
+                                <td> - Safe Assembly Point</td>
+                            </tr>
+    
+                    </table>
+                      <br/>
+                    
+                </div>
+        </div>
+
 
         <div class="row" style="padding-top:15px">
             <div class="col-sm">
@@ -164,40 +291,19 @@ var myChart = new Chart(ctx, {
                         </ul>
                     </p>
                 </div>
-            </div>
+            </div>           
             <div class="col-sm">
                 <div class="alert-success shadow col3height">
-                    <p style="font-weight: bold">Affected Area</p>
-                    <img src="./affected_zone_1.jpg" width="90%" height="80%" />
-                </div>
-            </div>
-            <div class="col-sm">
-                <div class="alert-success shadow col3height">
-                    <p style="font-weight: bold">Safe Areas & Food Supplies </p>
-                    <img src="./safe_place.png" width="90%" height="80%" />
-                    <!--   Help WIKI
+                    <p style="font-weight: bold">Help WIKI </p>
                             <p><a href="./howto.html" >How do I get a medicine ?</a></p>
                             <p><a href="./howto.html" >Why To </a></p>
                             <p><a href="./howto.html" >Where To </a></p>
-                            <p><a href="./howto.html" >How To </a></p> -->
+                            <p><a href="./howto.html" >How To </a></p>
                 </div>
             </div>
         </div>
 
         <br />
-        <div align="center" class="row">
-            <div class="col-sm-10">
-                <p style="font-weight: bold; font-size: 1rem;"> Emergency Map </p>
-                <div id="mapid"></div>
-            </div>
-            <div class="col-sm-2">
-                <br />                
-                <!-- <img src="markers/flame.png" width="32px" height="32px" /> - Fire Alerts -->
-            </div>
-        </div>
-        <br />
-        <br />
-
         <br />
         <br />
     </div>
