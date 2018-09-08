@@ -1,15 +1,20 @@
 <html>
+
 <head>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.js" ></script>
-        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
-<link href="./index.css" rel="stylesheet">
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"/>
-<script src="https://unpkg.com/leaflet@1.3.4/dist/leaflet.js"></script>
-<script>
-    $(document).ready(function(){
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4"
+        crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm"
+        crossorigin="anonymous"></script>
+    <link href="./index.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.3.4/dist/leaflet.js"></script>
+    <script>
+        $(document).ready(function(){
         //var json = '';
         //$("#alertData").html="";
     var map = L.map('mapid').setView([-37.5088, 145.119], 15);
@@ -19,17 +24,17 @@
     }).addTo(map);
 
     var FlameIconOpt = L.Icon.extend({
-         options: {            
+        options: {            
             iconSize:     [38, 38],            
-            iconAnchor:   [-22, -20],
-            popupAnchor:  [32, 32]
-        } 
+            iconAnchor:   [0, 0],
+            popupAnchor:  [20, 5]
+        }
     });
 
     var flameIcon = new FlameIconOpt({iconUrl: './markers/flame.png'});
 
-    L.marker([-37.5088, 145.119], { icon: flameIcon} ).addTo(map)
-    .bindPopup('<p class="alert-danger">Emergency , Fire, needs more help !!</p>')
+    L.marker([-37.5088, 145.119] /* , { icon: flameIcon} */ ).addTo(map)
+    .bindPopup('<h6 class="alert-danger">Fire !! Emergency!! needs more help !! Effected People: 100 <br/></h6>')
     .openPopup();
    /* var ctx = document.getElementById("myChart").getContext('2d');
 var myChart = new Chart(ctx, {
@@ -70,10 +75,11 @@ var myChart = new Chart(ctx, {
 });*/
 });
 </script>
-</head>    
+</head>
+
 <body style="background: white;">
-        <div class="container-fluid">
-        <div style="padding: 5px; padding-left:10px;" class="row">        
+    <div class="container-fluid">
+        <div style="padding: 5px; padding-left:10px;" class="row">
             <div class="col-sm-8">
                 <h1 class="display-4 text-dark">Emergency Rescue System</h1>
             </div>
@@ -81,88 +87,112 @@ var myChart = new Chart(ctx, {
                 <button class="btn btn-success" id="ems_login" style="padding: 5px; font-weight: bold">EMS Login</button>
             </div>
         </div>
-        
+
         <div class="row">
             <div class="col-sm-6">
-                    <div class="card">
-                        <div class="card-header text-dark bg-warning" style="font-weight: bold">
-                            <span>EMS Alerts</span>  
-                        </div>
-                        <div class="card-body" style="height: 200px; overflow: scroll">
-                            <marquee direction="up" scrollamount="3" onstart onmouseover="this.stop();" onmouseout="this.start();">
-                                <p class="card-text">Populate the data from the backend whichever is required from Govt/EMS admins</p>                              
-                                Data<br/>
-                                Data<br/>
-                                Data<br/>
-                                Data<br/>
-                                Data<br/>
-                                Data<br/>
-                                <p id="alertsData">
-
-                                </p>
-                            </marquee>     
-                        </div>
+                <div class="card">
+                    <div class="card-header text-dark bg-warning" style="font-weight: bold">
+                        <span>EMS Alerts</span>
                     </div>
+                    <div class="card-body" style="height: 200px; overflow: scroll">
+                        <marquee direction="up" scrollamount="3" onstart onmouseover="this.stop();" onmouseout="this.start();">
+                            <p class="card-text">Populate the data from the backend whichever is required from Govt/EMS
+                                admins</p>
+                            Data<br />
+                            Data<br />
+                            Data<br />
+                            Data<br />
+                            Data<br />
+                            Data<br />
+                            <p id="alertsData">
+
+                            </p>
+                        </marquee>
+                    </div>
+                </div>
             </div>
             <div class="col-sm-6">
                 <!-- <canvas id="myChart" width="400px" height="400px"></canvas> -->
                 <div class="card">
-                        <div class="card-header text-white bg-info" style="font-weight: bold">
-                            <div class="row">
+                    <div class="card-header text-white bg-info" style="font-weight: bold">
+                        <div class="row">
                             <div class="col-sm-6">
-                                <span>People Near By and Connectivity</span>  
+                                <span>People Near By and Connectivity</span>
                             </div>
                             <div class="input-group col-sm-6">
-                                    <input type="text" class="form-control form-control-sm" placeholder="Search a Person" aria-label="Search a Person" aria-describedby="button-addon2">
-                                    <div class="input-group-append">
-                                        <button class="btn btn-dark btn-sm" type="button" id="button-addon2">Search</button>
-                                    </div>
+                                <input type="text" class="form-control form-control-sm" placeholder="Search for a Person"
+                                    aria-label="Search a Person" aria-describedby="button-addon2">
+                                <div class="input-group-append">
+                                    <button class="btn btn-dark btn-sm" type="button" id="button-addon2">Search</button>
+                                </div>
                             </div>
-                            </div>                            
                         </div>
-                        <div class="card-body" style="height: 200px; overflow: scroll">
-                                <marquee direction="up" scrollamount="1">
-                                    <p class="card-text">Populate the data of people near by and their safety .. </p> 
-                                    <p class="text-dark bold">
-                                        Rakesh <br/>
-                                        Looking for a help ...@23.444,45.664
-                                    </p>                    
-                            </marquee>
-                        </div>
+                    </div>
+                    <div class="card-body" style="height: 200px; overflow: scroll">
+                        <marquee direction="up" scrollamount="1">
+                            <p class="card-text">Populate the data of people near by and their safety .. </p>
+                            <p class="text-dark bold">
+                                John Mr <br />
+                                Looking for a help ...@23.444,45.664
+                            </p>
+                        </marquee>
+                    </div>
                 </div>
             </div>
         </div>
 
         <div class="row" style="padding-top:15px">
-            <div class="col-sm" >
+            <div class="col-sm">
                 <div class="alert-success shadow col3height">
-                        Details of Safe Locations and Directions
+                    <p>
+                        <span style="font-weight: bold">Guidelines:</span>
+                        <ul>
+                            <li>Take shelter under tables, desks or in doorways.</li>
+                            <li>Stay away from windows, shelving and large free-standing furniture.</li>
+                            <li>After the earthquake, look for injured persons in your area and assist, provided it is
+                                safe to do so.</li>
+                            <li>Leave the building as soon as your are able to.</li>
+                        </ul>
+                    </p>
                 </div>
             </div>
             <div class="col-sm">
                 <div class="alert-success shadow col3height">
-                        List of Food / Relief areas
+                    <p style="font-weight: bold">Affected Area</p>
+                    <img src="./affected_zone_1.jpg" width="90%" height="80%" />
                 </div>
             </div>
             <div class="col-sm">
                 <div class="alert-success shadow col3height">
-                        WIKI
-                        <p><a href="./howto.html" >What To </a></p>
-                        <p><a href="./howto.html" >Why To </a></p>
-                        <p><a href="./howto.html" >Where To </a></p>
-                        <p><a href="./howto.html" >How To </a></p>
+                    <p style="font-weight: bold">Safe Areas </p>
+                    <img src="./safe_place.png" width="90%" height="80%" />
+                    <!--   Help WIKI
+                            <p><a href="./howto.html" >How do I get a medicine ?</a></p>
+                            <p><a href="./howto.html" >Why To </a></p>
+                            <p><a href="./howto.html" >Where To </a></p>
+                            <p><a href="./howto.html" >How To </a></p> -->
                 </div>
             </div>
         </div>
 
-        <br/>
-        <br/>
-        <div align="center">
-            <p style="font-weight: bold; font-size: 1rem;"> Emergency Map </p>
-            <div id="mapid"></div>
-        </div>            
-        <br/>
-        <br/>
+        <br />
+        <div align="center" class="row">
+            <div class="col-sm-10">
+                <p style="font-weight: bold; font-size: 1rem;"> Emergency Map </p>
+                <div id="mapid"></div>
+            </div>
+            <div class="col-sm-2">
+                <br />
+                <p style="font-weight: bold">Legends</p>
+                <!-- <img src="markers/flame.png" width="32px" height="32px" /> - Fire Alerts -->
+            </div>
+        </div>
+        <br />
+        <br />
+
+        <br />
+        <br />
     </div>
 </body>
+
 </html>
