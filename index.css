@@ -24,3 +24,8 @@
     padding-right: 8px;
     padding-left: 8px;
 }
+
+#mapid { 
+    width: 90%;
+    height: 400px; 
+}
