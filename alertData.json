@@ -1,4 +1,13 @@
-[{
-  "alertName": "Emergency",
-  "alertDesc": ""  
-}]
+{
+  agedCares: [{"name": "Mercy Place East Melbourne", "number": "50", "address": "22 Verona Ln, East Melbourne VIC 3002"},
+    {"name": "Rathdowne Place Aged Care", "number": "40", "address": "497 Rathdowne St, Carlton VIC 3053"}],
+  childCares: [{"name": "QV Children's Centre", "number": "200", "address": "Level 8, QV Building,, 10 Artemis Lane, Melbourne VIC 3000"},
+    {"name": "Guardian Early Learning Centre - 101 Collins", "number": "150", "address": "East, 101 Collins St, Melbourne VIC 3000"},
+    {"name": "Goodstart Early Learning Melbourne", "number": "100", "address": "E211 La Trobe St, Melbourne VIC 3000"}],
+  schools: [{"name": "Carlton Gardens Primary School", "number": "1000", "address": "215 Rathdowne St, Carlton VIC 3053"},
+    {"name": "St Joseph’s Primary School", "number": "800", "address": "46 Otter St, Collingwood VIC 3066"}],
+  physicallyChallengedPeople:[{"name": "Mr. Eric", "number": "1", "address": "12 Rathdowne St, Carlton VIC 3053"},
+    {"name": "Mr. Michael - family", "number": "2", "address": "3 Otter St, Collingwood VIC 3066"}],
+  majorEvents: [{"name": "Mr. Eric", "number": "1", "address": "12 Rathdowne St, Carlton VIC 3053"},
+    {"name": "Mr. Michael - family", "number": "2", "address": "3 Otter St, Collingwood VIC 3066"}]
+}
