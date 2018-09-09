@@ -48,7 +48,7 @@
 }
 
 .sidenav a {
-    padding: 8px 8px 8px 32px;
+    padding: 8px 8px 8px 12px;
     text-decoration: none;
     font-size: 14px;
     color: white;
@@ -57,7 +57,7 @@
 }
 
 .sidenav a:hover {
-    color: white;
+    color: skyblue;
 }
 
 .sidenav .closebtn {
