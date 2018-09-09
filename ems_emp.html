@@ -33,7 +33,7 @@
     // https://creativecommons.org/licenses/by/3.0/
 
     var groupIcon = new FlameIconOpt({iconUrl: './markers/group.png'});
-    var lifiIcon = new FlameIconOpt({iconUrl: './markers/Lifi.png'});
+    var emeIcon = new FlameIconOpt({iconUrl: './markers/emergencyresponse.png'});
 
      var flameIcon = new FlameIconOpt({iconUrl: './markers/danger.png'});
     var waterIcon = new FlameIconOpt({iconUrl: './markers/water.png'});
@@ -41,26 +41,26 @@
     var safeIcon = new FlameIconOpt({iconUrl: './markers/safe.png'});
 
     L.marker([-37.5068, 145.121] , { icon: flameIcon} ).addTo(map)
-    .bindPopup('<h6 class="alert-danger">John is waiting for help..</h6>')
+    .bindPopup('<h6 class="alert-danger">People waiting for help..</h6>')
     .openPopup();
     
 
-    L.marker([-37.5038, 145.130] , { icon: bananaIcon}  ).addTo(map)
-    .bindPopup('<h6 class="alert-danger">Food Resources..</h6>')
+    L.marker([-37.5038, 145.1185] , { icon: bananaIcon}  ).addTo(map)
+    .bindPopup('<h6 class="alert-info">Food Resources..</h6>')
     .openPopup();
 
-    L.marker([-37.5018, 145.1304] , { icon: waterIcon}  ).addTo(map)
-    .bindPopup('<h6 class="alert-danger">Water Resources..</h6>')
+    L.marker([-37.5025, 145.1199] , { icon: waterIcon}  ).addTo(map)
+    .bindPopup('<h6 class="alert-info">Water Resources..</h6>')
     .openPopup();
    
-    L.marker([-37.5068, 145.1305] , { icon: safeIcon} ).addTo(map)
+    L.marker([-37.5018, 145.121] , { icon: safeIcon} ).addTo(map)
     .bindPopup('<h6 class="alert-success">Safe Assembly point..</h6>')
     .openPopup();
 
    
 
-    L.marker([-37.5038, 145.120]  , { icon: lifiIcon}  ).addTo(map)
-    .bindPopup('<h6 class="alert-primary">Rescue Team LIFI point..</h6>')
+    L.marker([-37.5038, 145.1205]  , { icon: emeIcon}  ).addTo(map)
+    .bindPopup('<h6 class="alert-primary"> Emergency Response Rescue Team point..</h6>')
     .openPopup();
 
     L.marker([-37.5018, 145.123]  , { icon: groupIcon}  ).addTo(map)
@@ -214,6 +214,27 @@ function getPopulationData(){
         </div>
     </div>
     <div class="container-fluid">
+
+            <div class="modal fade" tabindex="-1" role="dialog" id="replyAdminModal">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Recording</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <p>Sending your Message ...</p>
+                            <img src="recording.PNG" width="200px" height="50px" />
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-outline-success" id="done_btn">Done</button>
+                        </div>
+                        </div>
+                    </div>
+            </div>
+
         <div class="row">
             <!-- <div class="col-sm-1"></div> -->
             <div class="col-sm-12">
@@ -224,7 +245,7 @@ function getPopulationData(){
                                 <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; Menu</span>
                             </div>
                             <div class="col-sm-10">
-                                <h1 class="display-4 text-dark">Emergency Data Respone</h1>
+                                <h1 class="display-4 text-dark">Emergency Respone Admin Portal</h1>
                             </div>
                         </div>
                     </div>
@@ -261,12 +282,22 @@ function getPopulationData(){
                                 </span>
                             </div>
                             <div class="card-body" style="height: 200px; max-height: 200px; overflow: hidden">
-                                <table>
+                                <table style="height: 120px;">
                                     <tr>
                                         <td><span id="msgs_from_pple"><b>Tom</b>: Please help me...</span></td>
                                         <td><button class="btn btn-sm btn-primary">Reply</button></td>
+                                        </tr>
+                                        <tr>
+                                        <td><span id="msgs_from_pple"><b>John</b>: Can you please search for my kid(Michael 6 years) at school...</span></td>
+                                        <td><button class="btn btn-sm btn-primary">Reply</button></td>
                                     </tr>
                                 </table>
+                                <div class="input-group col-sm">
+                                        <input type="text" class="form-control" placeholder="Send message to people" aria-label="Send message to people" aria-describedby="button-addon2" id="send_message_taxt">
+                                        <div class="input-group-append">
+                                            <button class="btn btn-outline-secondary" type="button" id="button_seand">Send</button>
+                                        </div>
+                                    </div>    
                             </div>
                         </div>
                     </div>
@@ -284,8 +315,8 @@ function getPopulationData(){
                                 <td> - Group of People</td>
                             </tr>
                             <tr>
-                                <td><img src="markers/Lifi.png" width="32px" height="32px" /> </td>
-                                <td> - LIFI Rescue Team Points</td>
+                                <td><img src="markers/emergencyresponse.png" width="32px" height="32px" /> </td>
+                                <td> - Emergency Response Rescue Team Points</td>
                             </tr>
                             <tr>
                                 <td><img src="markers/danger.png" width="32px" height="32px" /></td>
