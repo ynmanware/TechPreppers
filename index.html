@@ -15,6 +15,7 @@
             $("#recordingModal").modal("hide");
             $('#registerModal').modal('hide');
             $("#succ_alert").hide();
+            $('#loginModal').modal('hide');
         //var json = '';
         //$("#alertData").html="";
     var map = L.map('mapid').setView([-37.5068, 145.129], 15);
@@ -38,16 +39,16 @@
     var safeIcon = new FlameIconOpt({iconUrl: './markers/safe.png'});
 
     L.marker([-37.5068, 145.119] , { icon: flameIcon} ).addTo(map)
-    .bindPopup('<h6 class="alert-danger">John is waiting for help..</h6>')
+    .bindPopup('<h6 class="alert-danger">Fire !!! Do not go here ..</h6>')
     .openPopup();
     
 
     L.marker([-37.5038, 145.120] , { icon: bananaIcon}  ).addTo(map)
-    .bindPopup('<h6 class="alert-danger">Mack is waiting for help..</h6>')
+    .bindPopup('<h6 class="alert-danger">Some food available here..</h6>')
     .openPopup();
 
     L.marker([-37.5018, 145.123] , { icon: waterIcon}  ).addTo(map)
-    .bindPopup('<h6 class="alert-danger">John is waiting for help..</h6>')
+    .bindPopup('<h6 class="alert-danger">Drinking water available here..</h6>')
     .openPopup();
    
     L.marker([-37.5068, 145.129] , { icon: safeIcon} ).addTo(map)
@@ -87,7 +88,10 @@
         },1500);
     });
 
-
+    $("#ems_login").click(function(){
+        $('#loginModal').modal('show');
+    });
+    
 
    
 });
@@ -150,13 +154,47 @@
             </div>
     </div>
 
+    <div class="modal fade" tabindex="-1" role="dialog" id="loginModal">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                <div class="modal-header alert-info text-dark">
+                    <h5 class="modal-title">Login</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                            <div class="form-group row">
+                                <label for="staticEmail" class="col-sm-3 col-form-label">Username :</label>
+                                <div class="col-sm-9">
+                                <input type="text" class="form-control" placeholder="Please enter your username" id="username" >
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="inputPassword" class="col-sm-3 col-form-label">Password :</label>
+                                <div class="col-sm-9">
+                                <input type="password" class="form-control" id="inputPassword" placeholder="Please enter your password">
+                                </div>
+                            </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-success" id="login_sub_btn"><a href="./ems_emp.html">Login</a></button>
+                    <button type="reset" class="btn btn-outline-dark" id="reset_btn">Reset</button>
+                </div>
+                </div>
+            </div>
+    </div>
+
     <div class="container-fluid">
         <div style="padding: 5px; padding-left:10px;" class="row">
             <div class="col-sm-7">
                 <h1 class="display-4 text-dark">Emergency Data Response</h1>
             </div>
-            <div class="col-sm-5" style="padding-top:10px;" align="right">                
-                <button class="btn btn-danger" style="width: 15%; height:15%; border-radius: 50%" id="push_btn"><i class="fas fa-microphone"></i> Push</button>                
+            <div class="col-sm-5" style="padding-top:10px;" align="right">    
+                EMERGENCY PUSH BUTTON            
+                <button class="btn btn-danger" style="width: 25%; height:15%; border-radius: 50%" id="push_btn"><img src="./markers/microphone.svg" width="50px" height="80px" /></button>                
                 <button class="btn btn-success" id="ems_login" style="padding: 5px; font-weight: bold">Rescue Team Login</button>
 
             </div>
@@ -201,7 +239,7 @@
                     <div class="card-header text-white bg-info" style="font-weight: bold">
                         <div class="row">
                             <div class="col-sm-6">
-                                <span>Message bot to connect near by people</span>
+                                <span>Message Board</span>
                             </div>
                             <div class="input-group col-sm-6">
                                 <input type="text" class="form-control form-control-sm" placeholder="Search for a Person"
@@ -294,9 +332,9 @@
                     <p style="font-weight: bold">Help WIKI - From EMS Rescue Team </p>
                             <p><a href="./howto.html" >How do I get a medicine ?</a></p>
                             <p><a href="./howto.html" >Why do I need to have the safety hand wraps? </a></p>
-                            <p><a href="./howto.html" >Where do I get the food for child ? </a></p>
+                            <p><a href="./howto.html" >Where do I get food for child ? </a></p>
                             <p><a href="./howto.html" >What can be the next forecast ? </a></p>
-                            <p><a href="./howto.html" >How many rescue teams we have ? </a></p>
+                            <p><a href="./howto.html" >How many rescue teams do we have ? </a></p>
                 </div>
             </div>
         </div>
@@ -307,6 +345,11 @@
         <br />
         <br />
         <br />
+        <div>
+            <span>Credit Note : Thanks for free icons and markers</span>
+            <a href="https://www.iconfinder.com/laurareen">icons</a> <a href="https://www.deviantart.com/svengraph">markers</a>
+            <a href="https://creativecommons.org/licenses/by/3.0/">license</a>
+        </div>
     </div>
 </body>
 

@@ -1,21 +1,21 @@
 <html>
 
 <head>
-        <script src="./js/Chart.js"></script>
-        <script src="./js/jquery-3.3.1.slim.min.js"></script>
-        <script src="./js/popper.min.js"></script>
-        <link rel="stylesheet" href="./css/bootstrap.min.css">
-        <script src="./js/bootstrap.min.js"></script>
-        <link href="./css/index.css" rel="stylesheet">
-        <link rel="stylesheet" href="./css/leaflet.css" />
-        <link rel="stylesheet" href="./css/all.css">
-        <script src="./js/leaflet.js"></script>
+    <script src="./js/Chart.js"></script>
+    <script src="./js/jquery-3.3.1.slim.min.js"></script>
+    <script src="./js/popper.min.js"></script>
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <script src="./js/bootstrap.min.js"></script>
+    <link href="./css/index.css" rel="stylesheet">
+    <link rel="stylesheet" href="./css/leaflet.css" />
+    <link rel="stylesheet" href="./css/all.css">
+    <script src="./js/leaflet.js"></script>
     <script>
         //var populationData=require("./peopleData.json");
         $(document).ready(function(){
         
        
-    var map = L.map('mapid').setView([-37.5018, 145.123], 15);
+    var map = L.map('mapid').setView([-37.5068, 145.119], 15);
     console.log("Map initialised");
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
@@ -29,20 +29,48 @@
         }
     });
 
-    var flameIcon = new FlameIconOpt({iconUrl: './markers/flame.png'});
+    // https://www.iconfinder.com/yeasirakash
+    // https://creativecommons.org/licenses/by/3.0/
 
-    L.marker([-37.5068, 145.119] /* , { icon: flameIcon} */ ).addTo(map)
-    .bindPopup('<h6 class="alert-danger">John is waiting for help..</h6>')
-    .openPopup();
+    var groupIcon = new FlameIconOpt({iconUrl: './markers/group.png'});
+    var lifiIcon = new FlameIconOpt({iconUrl: './markers/Lifi.png'});
 
-    L.marker([-37.5038, 145.120] /* , { icon: flameIcon} */ ).addTo(map)
-    .bindPopup('<h6 class="alert-danger">Mack is waiting for help..</h6>')
-    .openPopup();
+     var flameIcon = new FlameIconOpt({iconUrl: './markers/danger.png'});
+    var waterIcon = new FlameIconOpt({iconUrl: './markers/water.png'});
+    var bananaIcon = new FlameIconOpt({iconUrl: './markers/banana.png'});
+    var safeIcon = new FlameIconOpt({iconUrl: './markers/safe.png'});
 
-    L.marker([-37.5018, 145.123] /* , { icon: flameIcon} */ ).addTo(map)
+    L.marker([-37.5068, 145.121] , { icon: flameIcon} ).addTo(map)
     .bindPopup('<h6 class="alert-danger">John is waiting for help..</h6>')
     .openPopup();
     
+
+    L.marker([-37.5038, 145.130] , { icon: bananaIcon}  ).addTo(map)
+    .bindPopup('<h6 class="alert-danger">Food Resources..</h6>')
+    .openPopup();
+
+    L.marker([-37.5018, 145.1304] , { icon: waterIcon}  ).addTo(map)
+    .bindPopup('<h6 class="alert-danger">Water Resources..</h6>')
+    .openPopup();
+   
+    L.marker([-37.5068, 145.1305] , { icon: safeIcon} ).addTo(map)
+    .bindPopup('<h6 class="alert-success">Safe Assembly point..</h6>')
+    .openPopup();
+
+   
+
+    L.marker([-37.5038, 145.120]  , { icon: lifiIcon}  ).addTo(map)
+    .bindPopup('<h6 class="alert-primary">Rescue Team LIFI point..</h6>')
+    .openPopup();
+
+    L.marker([-37.5018, 145.123]  , { icon: groupIcon}  ).addTo(map)
+    .bindPopup('<h6 class="alert-danger">People are waiting for our help..</h6>')
+    .openPopup();
+    
+    L.marker([-37.5068, 145.119]  , { icon: groupIcon}  ).addTo(map)
+    .bindPopup('<h6 class="alert-danger">People are waiting for our help..</h6>')
+    .openPopup();
+
         var ctx = document.getElementById("bar-chart").getContext('2d');
         var myChart = new Chart(ctx, {
             type: 'bar',
@@ -57,6 +85,8 @@
                 }
             }
         });
+
+        
         
 
 });
@@ -117,7 +147,7 @@ function getPopulationData(){
     ds.backgroundColor = [];
     ds.borderColor =[];
     ds.data =[];
-    ds.label = "No.of People :";
+    ds.label = "Count of People in Trouble";
     for(var x=0;x<ppData.length; x++){ 
         labels.push(ppData[x].age);                       
         ds.data.push( ppData[x].count);
@@ -136,61 +166,71 @@ function getPopulationData(){
 </head>
 
 <body style="background: white;">
-        <div id="mySidenav" class="sidenav">
-                <div class="list-group">
-                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    <div id="mySidenav" class="sidenav">
+        <div class="list-group">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+            <ul>
+                <li><a href="#">Information services</a></li>
+                <li><a href="#">System Status Overview</a></li>
+                <li><a href="#">Uplink Management</a></li>
+                <li><a href="#">Downlink Mesh Networks</a></li>
+                <li><a href="#">Telecoms</a></li>
+                <li><a href="#">Databases</a></li>
+                <li><a href="#">Web Services</a></li>
                 <ul>
-                        <li><a href="#">Information services</a></li>
-                        <li><a href="#">System Status Overview</a></li>
-                        <li><a href="#">Uplink Management</a></li>
-                        <li><a href="#">Downlink Mesh Networks</a></li>
-                        <li><a href="#">Telecoms</a></li>
-                        <li><a href="#">Databases</a></li>
-                        <li><a href="#">Web Services</a></li>
-                            <ul><li><a href="#">       Health Services</a></li></ul>
-                        <li><a href="#">   Patient Register</a></li>
-                        <li><a href="#">   Medical Facilities</a></li>
-                        <ul><li><a href="#">        Beds</a></li>
-                        <li><a href="#">        Equipment</a></li></ul>
-                        <li><a href="#">   Medical Staff</a></li>
-                        <ul><li><a href="#">·        By Specialty</a></li>
-                        <li><a href="#">·        Shift Management</a></li>
-                        <li><a href="#">·        Physical Services</a></li></ul>
-                        <li><a href="#">   Road closures</a></li>
-                        <li><a href="#">   Threat Management</a></li>
-                        <li><a href="#">   Shelter Management</a></li>
-                        <li><a href="#">   Resources and Equipment</a></li>	
-                        <ul><li><a href="#">·        Security Services</a></li>	</ul>
-                        <li><a href="#">   Incident Reports</a></li>	
-                        <li><a href="#">   Action Plans</a></li>	
-                        <li><a href="#">   Command Structure</a></li>	
-                        <ul><li><a href="#">        Government Services</a></li></ul>
-                        <li><a href="#">   Identity and Role Management</a></li>	
-                        <li><a href="#">   Staff and Volunteer Coordination</a></li>	
-                        <li><a href="#">   Mass Communications</a></li>	
-                        <li><a href="#">   Situation Reports</a></li>	
-                        <li><a href="#">   Inter-Agency Management</a></li>
-                    </ul>
-                </div>
+                    <li><a href="#"> Health Services</a></li>
+                </ul>
+                <li><a href="#"> Patient Register</a></li>
+                <li><a href="#"> Medical Facilities</a></li>
+                <ul>
+                    <li><a href="#"> Beds</a></li>
+                    <li><a href="#"> Equipment</a></li>
+                </ul>
+                <li><a href="#"> Medical Staff</a></li>
+                <ul>
+                    <li><a href="#">· By Specialty</a></li>
+                    <li><a href="#">· Shift Management</a></li>
+                    <li><a href="#">· Physical Services</a></li>
+                </ul>
+                <li><a href="#"> Road closures</a></li>
+                <li><a href="#"> Threat Management</a></li>
+                <li><a href="#"> Shelter Management</a></li>
+                <li><a href="#"> Resources and Equipment</a></li>
+                <ul>
+                    <li><a href="#">· Security Services</a></li>
+                </ul>
+                <li><a href="#"> Incident Reports</a></li>
+                <li><a href="#"> Action Plans</a></li>
+                <li><a href="#"> Command Structure</a></li>
+                <ul>
+                    <li><a href="#"> Government Services</a></li>
+                </ul>
+                <li><a href="#"> Identity and Role Management</a></li>
+                <li><a href="#"> Staff and Volunteer Coordination</a></li>
+                <li><a href="#"> Mass Communications</a></li>
+                <li><a href="#"> Situation Reports</a></li>
+                <li><a href="#"> Inter-Agency Management</a></li>
+            </ul>
         </div>
+    </div>
     <div class="container-fluid">
         <div class="row">
             <!-- <div class="col-sm-1"></div> -->
             <div class="col-sm-12">
                 <div style="padding: 5px; padding-left:10px;" class="row">
-                    <div class="col-sm-8">   
+                    <div class="col-sm-8">
                         <div class="row">
                             <div class="col-sm-2">
-                                    <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; Menu</span>
+                                <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; Menu</span>
                             </div>
                             <div class="col-sm-10">
-                                    <h1 class="display-4 text-dark">Emergency Data Respone</h1>
+                                <h1 class="display-4 text-dark">Emergency Data Respone</h1>
                             </div>
-                        </div>                    
+                        </div>
                     </div>
                     <div class="col-sm-4" style="padding-top:10px;" align="center">
                         <span>Welcome George</span>
-                        <button class="btn btn-warning" id="ems_logout" style="padding: 5px; font-weight: bold">Logout</button>
+                        <button class="btn btn-light" id="ems_logout" style="padding: 5px; font-weight: bold"><a href="./index.html">Logout</a></button>
                     </div>
                 </div>
                 <div class="input-group mb-3" style="padding-left:15%; padding-right:15%; ">
@@ -208,7 +248,7 @@ function getPopulationData(){
                                     People Affected (By Age)
                                 </span>
                             </div>
-                            <div class="card-body" style="height: 200px; max-height: 200px; overflow: hidden">
+                            <div class="card-body" style="height: 200px; max-height: 200px; overflow: auto">
                                 <canvas id="bar-chart" height="90%"></canvas>
                             </div>
                         </div>
@@ -233,10 +273,48 @@ function getPopulationData(){
                 </div>
                 <br />
                 <h5 align="center">Rescue Team and People</h5>
-                <div id="mapid"></div>
+                <div class="row">
+                    <div class="col-sm-10">
+                        <div id="mapid"></div>
+                    </div>
+                    <div class="col-sm-2">
+                        <table>
+                            <tr>
+                                <td><img src="markers/group.png" width="32px" height="32px" /></td>
+                                <td> - Group of People</td>
+                            </tr>
+                            <tr>
+                                <td><img src="markers/Lifi.png" width="32px" height="32px" /> </td>
+                                <td> - LIFI Rescue Team Points</td>
+                            </tr>
+                            <tr>
+                                <td><img src="markers/danger.png" width="32px" height="32px" /></td>
+                                <td> - Fire Alerts</td>
+                            </tr>
+                            <tr>
+                                <td><img src="markers/water.png" width="32px" height="32px" /> </td>
+                                <td> - Water Resources</td>
+                            </tr>
+                            <tr>
+                                <td><img src="markers/banana.png" width="32px" height="32px" /> </td>
+                                <td> - Food Resources</td>
+                            </tr>
+                            <tr>
+                                <td><img src="markers/safe.png" width="32px" height="32px" /> </td>
+                                <td> - Safe Assembly Point</td>
+                            </tr>
+
+                        </table>
+                    </div>
+                </div>
+
                 <br />
                 <br />
             </div>
+        </div>
+        <div>
+            <span>Credit Note : Thanks for free icons and markers</span>
+            <a href="https://www.iconfinder.com/yeasirakash">icons</a> <a href="https://creativecommons.org/licenses/by/3.0/">license</a>
         </div>
     </div>
 </body>
